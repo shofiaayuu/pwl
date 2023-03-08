@@ -5,8 +5,10 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\DasboardController;
 use App\Http\Controllers\HobiController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KeluargaController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\KuliahController;
+use App\Http\Controllers\MataKuliahController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
@@ -106,3 +108,7 @@ Route::get('/kendaraan', [KendaraanController::class, 'index']);
 
 //TUGAS PRAKTIKUM 4
 Route::get('hobi',[HobiController::class, 'index']);
+
+Route::get('/mata_kuliah', [MataKuliahController::class, 'index']);
+
+Route::get('/keluarga', [KeluargaController::class, 'index']);

@@ -49,7 +49,19 @@
           <i class="nav-icon fas fa-book"></i>
           <p>Hobi</p>
         </a>
-    </li>
+      </li>
+      <li class="nav-item">
+        <a href={{ url('/mata_kuliah') }} class="nav-link">
+          <i class="nav-icon fas fa-book"></i>
+          <p>Mata Kuliah</p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href={{ url('/keluarga') }} class="nav-link">
+          <i class="nav-icon fas fa-book"></i>
+          <p>Keluarga</p>
+        </a>
+      </li>
     </ul>
   </nav>
   <!-- /.sidebar-menu -->
