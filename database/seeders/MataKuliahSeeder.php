@@ -334,7 +334,7 @@ class MataKuliahSeeder extends Seeder
                 'semester'=> '4',
                 'nilai'=> '',
             ],
-            
+                 
 
 
 

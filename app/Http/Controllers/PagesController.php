@@ -62,7 +62,7 @@ class PagesController extends Controller
             </li>
         </ul>']); 
         
-    }
+    } 
 
     public function aboutUs()
     {
