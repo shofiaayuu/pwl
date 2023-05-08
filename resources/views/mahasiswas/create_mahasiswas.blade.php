@@ -38,6 +38,17 @@
       
                 </div>
                 <div class="form-group">
+                    <label for="Kelas">Kelas</label>
+                    <select name="kelas_id" class="form-control @error('kelas_id') is-invalid @enderror">
+                      @foreach($kelas as $kls)
+                      <option value="{{$kls->id}}">{{$kls->nama_kelas}}</option>
+                      @endforeach
+                    </select>
+                    @error('kelas_id')
+                      <span class="error invalid-feedback">{{ $message }} </span>
+                    @enderror
+                </div>
+                <div class="form-group">
                     <label >JK</label>
                     <input class="form-control @error('jk') is-invalid @enderror" value="{{isset($mhs)? $mhs->jk: old('jk') }}" name="jk" type="text"/>
                     @error('jk')
@@ -55,7 +66,7 @@
                 </div>
                 <div class="form-group">
                     <label >Tanggal Lahir</label>
-                    <input class="form-control @error('tanggal_lahir') is-invalid @enderror" value="{{isset($mhs)? $mhs->tempat_lahir: old('tanggal_lahir') }}" name="tanggal_lahir" type="text"/>
+                    <input class="form-control @error('tanggal_lahir') is-invalid @enderror" value="{{isset($mhs)? $mhs->tanggal_lahir: old('tanggal_lahir') }}" name="tanggal_lahir" type="text"/>
                     @error('tanggal_lahir')
                       <span class="error invalid-feedback">{{ $message }} </span>
                     @enderror

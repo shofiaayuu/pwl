@@ -25,6 +25,7 @@
                             <th>No</th>
                             <th>Nim</th>
                             <th>Nama</th>
+                            <th>Kelas</th>
                             <th>JK</th>
                             <th>Tempat Lahir</th>
                             <th>Tanggal Lahir</th>
@@ -40,6 +41,7 @@
                                 <td>{{++$i}}</td>
                                 <td>{{$m->nim}}</td>
                                 <td>{{$m->nama}}</td>
+                                <td>{{$m->kelas->nama_kelas}}</td>
                                 <td>{{$m->jk}}</td>
                                 <td>{{$m->tempat_lahir}}</td>
                                 <td>{{$m->tanggal_lahir}}</td>
@@ -47,7 +49,10 @@
                                 <td>{{$m->hp}}</td>
                                 
                                 <td>
-                                    {{-- Bikin simbol edit dan delete --}}
+                                    {{-- Bikin simbol show,edit dan delete --}}
+                                    <a href="{{url('/mahasiswas/'.$m->id)}}" 
+                                        class="btn btn-sm btn-primary">show</a>
+
                                     <a href="{{url('/mahasiswas/'.$m->id.'/edit')}}" 
                                         class="btn btn-sm btn-warning">edit</a>
                                     
@@ -56,6 +61,9 @@
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger">hapus</button>
                                     </form>
+
+                
+                                    
                                 </td>
                             </tr>
                             @endforeach
