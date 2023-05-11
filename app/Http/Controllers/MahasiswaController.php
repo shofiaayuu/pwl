@@ -6,6 +6,10 @@ use App\Models\Mahasiswa;
 use App\Models\MahasiswaModel;
 use Illuminate\Http\Request;
 use App\Models\KelasModel;
+use App\Models\Mahasiswa_Matakuliah;
+use App\Models\Mhs_MatkulModel;
+use App\Models\MhsMatkulModel;
+use Database\Seeders\Mhs_MatkulSeeder;
 
 class MahasiswaController extends Controller
 {
@@ -92,6 +96,7 @@ class MahasiswaController extends Controller
      * @param  \App\Models\Mahasiswa  $mahasiswa
      * @return \Illuminate\Http\Response
      */
+    
     public function show($id)
     {
         //menampilkan detail data berd nim
@@ -100,8 +105,16 @@ class MahasiswaController extends Controller
         $mahasiswas = MahasiswaModel::where('id',$id)->get();
         return view('mahasiswas.detail_mahasiswas', ['mahasiswas' => $mahasiswas[0]]);
         
-    }
 
+    }
+    public function khs($id)
+    { 
+        $mahasiswas = MahasiswaModel::where('id',$id)->first();
+        $khs = MhsMatkulModel::where('mahasiswa_id', $id)->get();
+        return view('mahasiswas.nilai_mahasiswa')
+            ->with('mahasiswas',$mahasiswas)
+            ->with('khs',$khs);
+    }
     /**
      * Show the form for editing the specified resource.
      *

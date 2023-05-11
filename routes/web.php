@@ -127,4 +127,5 @@ Route::middleware(['auth'])->group(function(){
     //PRAKTIKUM7
     Route::resource('/mahasiswas',MahasiswaController::class)->parameter('mahasiswas','id');
 
+    Route::get('/mahasiswas/{id}/khs',[MahasiswaController::class,'khs']);
 });

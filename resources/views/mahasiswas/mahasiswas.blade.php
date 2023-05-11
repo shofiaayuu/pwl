@@ -62,6 +62,9 @@
                                         <button type="submit" class="btn btn-sm btn-danger">hapus</button>
                                     </form>
 
+                                    <a href="{{url('/mahasiswas/'.$m->id.'/khs')}}" 
+                                        class="btn btn-sm btn-primary">nilai</a>
+
                 
                                     
                                 </td>
