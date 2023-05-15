@@ -55,7 +55,7 @@
 
                                     <a href="{{url('/mahasiswas/'.$m->id.'/edit')}}" 
                                         class="btn btn-sm btn-warning">edit</a>
-                                    
+                                     
                                     <form method="POST" action="{{url('/mahasiswas/'.$m->id)}}">
                                         @csrf
                                         @method('DELETE')

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DasboardController;
 use App\Http\Controllers\HobiController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\MataKuliahController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
+use App\Models\ArticlesModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -128,4 +130,7 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('/mahasiswas',MahasiswaController::class)->parameter('mahasiswas','id');
 
     Route::get('/mahasiswas/{id}/khs',[MahasiswaController::class,'khs']);
+
+    //PRAKTIKUM 10
+    Route::resource('articles',ArticlesController::class);
 });
