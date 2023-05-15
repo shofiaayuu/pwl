@@ -131,6 +131,11 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('/mahasiswas/{id}/khs',[MahasiswaController::class,'khs']);
 
-    //PRAKTIKUM 10
+    //PERTEMUAN 10
+    //PRAKTIKUM1
     Route::resource('articles',ArticlesController::class);
+
+    //PRAKTIKUM 3
+    Route::get('/cetak_pdf',[ArticlesController::class, 'cetak_pdf']);
+
 });
