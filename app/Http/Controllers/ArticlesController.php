@@ -65,9 +65,11 @@ class ArticlesController extends Controller
      * @param  \App\Models\Articles  $articles
      * @return \Illuminate\Http\Response
      */
-    public function edit(ArticlesModel $articles)
+    public function edit($id)
     {
-        //
+        $articles = ArticlesModel::find($id);
+
+        return view('articles.edit',['articles' => $articles]);
     }
 
     /**
@@ -77,9 +79,24 @@ class ArticlesController extends Controller
      * @param  \App\Models\Articles  $articles
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ArticlesModel $articles)
+    public function update(Request $request, $id)
     {
-        //
+        $articles = ArticlesModel::find($id);
+
+        $articles->title = $request->title;
+        $articles->content = $request->content;
+
+        if ($articles->featured_image && file_exists(storage_path('app/public/' . $articles->featured_image))) {
+            \Storage::delete('public/' .$articles->featured_image);
+        }
+        $image_name = $request->file('image')->store('images','public');
+        $articles->featured_image = $image_name;
+
+        $articles->save();
+        return 'Artikel berhasil diubah';
+
+
+
     }
 
     /**
