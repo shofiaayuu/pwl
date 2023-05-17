@@ -50,6 +50,7 @@ class MahasiswaController extends Controller
         $request->validate([
             'nim'=>'required|string|max:10|unique:mahasiswas,nim',
             'nama'=>'required|string|max:50',
+            'foto' => 'required|image|mimes:jpeg,png,jpg',
             'kelas_id'=>'required',
             'jk'=>'required|in:l,p',
             'tempat_lahir'=>'required|string|max:50',
@@ -59,12 +60,25 @@ class MahasiswaController extends Controller
         ]);
 
         MahasiswaModel::insert($request->except(['_token']));
+        $image_name = $request->file('foto')->store('images', 'public');
 
-        // $data = MahasiswaModel::create($request->except(['_token']));
+        MahasiswaModel::create([
+            'nim' => $request->nim,
+            'nama' => $request->nama,
+            'kelas_id' => $request->kelas_id,
+            'foto' => $image_name,
+            'jk' => $request->jk,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'alamat' => $request->alamat,
+            'hp' => $request->hp,
+            
+        ]);
+        
         return redirect('mahasiswas')
             ->with('success', 'Mahasiswa Berhasil Ditambahkan');
 
-
+        // $data = MahasiswaModel::create($request->except(['_token']));
     //     $mhs = new MahasiswaModel;
     //     $mhs->nim = $request->get('Nim');
     //     $mhs->nama = $request->get('Nama');
@@ -139,11 +153,11 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request,$id)
     {
-        
         //Melakukan validasi data
         $request->validate([
             'nim'=>'required|string|max:10|unique:mahasiswas,nim,'.$id,
             'nama'=>'required|string|max:50',
+            'foto' => 'image|mimes:jpeg,png,jpg',
             'kelas_id'=>'required',
             'jk'=>'required|in:l,p',
             'tempat_lahir'=>'required|string|max:50',
@@ -153,8 +167,22 @@ class MahasiswaController extends Controller
         ]);
 
         MahasiswaModel::where('id', '=', $id)->update($request->except(['_token','_method']));
+        $image_name = $request->file('foto')->store('images', 'public');
+
+        MahasiswaModel::where('id',$id)->update([
+            'nim' => $request->nim,
+            'nama' => $request->nama,
+            'kelas_id' => $request->kelas_id,
+            'foto' => $image_name,
+            'jk' => $request->jk,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'alamat' => $request->alamat,
+            'hp' => $request->hp,
+            
+        ]);
         return redirect('mahasiswas')
-            ->with('success','Mahasiswa Berhasil Ditambahkan');
+            ->with('success','Mahasiswa Berhasil Diupdate');
 
     }
     
