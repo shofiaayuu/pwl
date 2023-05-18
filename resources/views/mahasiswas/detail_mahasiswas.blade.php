@@ -31,6 +31,7 @@
                 <li class="list-group-item"><b>Alamat : </b>{{$mahasiswas->alamat}}</li>
                 <li class="list-group-item"><b>HP : </b>{{$mahasiswas->hp}}</li>
             </ul>
+            
         </div>
     </div>
     <!-- /.card -->

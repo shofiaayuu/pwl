@@ -6,6 +6,7 @@ use App\Models\Articles;
 use App\Models\ArticlesModel;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Storage;
 
 class ArticlesController extends Controller
 {
@@ -88,7 +89,8 @@ class ArticlesController extends Controller
         $articles->content = $request->content;
 
         if ($articles->featured_image && file_exists(storage_path('app/public/' . $articles->featured_image))) {
-            \Storage::delete('public/' .$articles->featured_image);
+            // \Storage::delete('public/' .$articles->featured_image);
+            Storage::delete('public/' . $articles->featured_image);
         }
         $image_name = $request->file('image')->store('images','public');
         $articles->featured_image = $image_name;

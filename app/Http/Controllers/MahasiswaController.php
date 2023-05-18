@@ -9,7 +9,10 @@ use App\Models\KelasModel;
 use App\Models\Mahasiswa_Matakuliah;
 use App\Models\Mhs_MatkulModel;
 use App\Models\MhsMatkulModel;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\DomPDF\PDF as DomPDFPDF;
 use Database\Seeders\Mhs_MatkulSeeder;
+use Illuminate\Support\Facades\Storage;
 
 class MahasiswaController extends Controller
 {
@@ -196,7 +199,20 @@ class MahasiswaController extends Controller
     public function destroy($id)
     {
         MahasiswaModel::where('id', '=', $id)->delete();
+        
+        $mahasiswas = MahasiswaModel::find($id);
+
+        Storage::disk('public')->delete($mahasiswas->foto);
+        $mahasiswas->delete();
+        
         return redirect('mahasiswas')
             ->with('success', 'Mahasiswa Berhasil Dihapus');
+    }
+
+    public function cetak_pdf($id) {
+        $mahasiswas = MahasiswaModel::where('id',$id)->first();
+        $khs = MhsMatkulModel::where('mahasiswa_id',$id)->get();
+        $pdf = PDF::loadview('mahasiswas.pdf_mahasiswa', ['mahasiswas' => $mahasiswas, 'khs' => $khs]);
+        return $pdf->stream();
     }
 }

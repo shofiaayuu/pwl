@@ -40,5 +40,7 @@
         @endif
 
         </tbody>
+        
     </table>
+    <a href="{{ url('/mahasiswas/cetak_pdf/' . $mahasiswas->id) }}" class="btn btn-danger">Cetak KRS</a>
 @endsection

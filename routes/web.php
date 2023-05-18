@@ -137,5 +137,7 @@ Route::middleware(['auth'])->group(function(){
 
     //PRAKTIKUM 3
     Route::get('/cetak_pdf',[ArticlesController::class, 'cetak_pdf']);
+    //tugas nomor2
+    Route::get('/mahasiswas/cetak_pdf/{id}', [MahasiswaController::class, 'cetak_pdf']);
 
 });
