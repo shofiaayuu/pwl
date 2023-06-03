@@ -129,7 +129,11 @@ Route::middleware(['auth'])->group(function(){
     //PRAKTIKUM7
     Route::resource('/mahasiswas',MahasiswaController::class)->parameter('mahasiswas','id');
 
+
     Route::get('/mahasiswas/{id}/khs',[MahasiswaController::class,'khs']);
+    //PRAKTIKUM 12
+    Route::post('/mahasiswas/data', [MahasiswaController::class, 'data']);
+    Route::post('/mahasiswas/delete/{id}', [MahasiswaController::class, 'destroy']);
 
     //PERTEMUAN 10
     //PRAKTIKUM1

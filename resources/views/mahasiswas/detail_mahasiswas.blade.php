@@ -19,12 +19,12 @@
         </div>
         <div class="card-body">
             <div class="d-flex justify-content-center">
-                <img src="{{ asset('storage/' . $mahasiswas->foto) }}" width="240">
+                {{-- <img src="{{ asset('storage/' . $mahasiswas->foto) }}" width="240"> --}}
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><b>Nim : </b>{{$mahasiswas->nim}}</li>
                 <li class="list-group-item"><b>Nama : </b>{{$mahasiswas->nama}}</li>
-                <li class="list-group-item"><b>Kelas : </b>{{$mahasiswas->kelas->nama_kelas}}</li>
+                {{-- <li class="list-group-item"><b>Kelas : </b>{{$mahasiswas->kelas->nama_kelas}}</li> --}}
                 <li class="list-group-item"><b>JK : </b>{{$mahasiswas->jk}}</li>
                 <li class="list-group-item"><b>Tempat Lahir : </b>{{$mahasiswas->tempat_lahir}}</li>
                 <li class="list-group-item"><b>Tanggal Lahir : </b>{{$mahasiswas->tanggal_lahir}}</li>

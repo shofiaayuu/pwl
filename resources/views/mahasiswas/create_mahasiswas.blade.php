@@ -38,7 +38,7 @@
                     @enderror
       
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="inputFoto">Foto</label>
                     <input type="file" id="inputFoto" class="form-control" name="foto" value="" required="required">
                     @error('foto')
@@ -55,7 +55,7 @@
                     @error('kelas_id')
                       <span class="error invalid-feedback">{{ $message }} </span>
                     @enderror
-                </div>
+                </div> --}}
                 <div class="form-group">
                     <label >JK</label>
                     <input class="form-control @error('jk') is-invalid @enderror" value="{{isset($mhs)? $mhs->jk: old('jk') }}" name="jk" type="text"/>
